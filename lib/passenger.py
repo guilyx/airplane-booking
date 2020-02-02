@@ -15,7 +15,7 @@ class Passenger():
         print("---- PASSENGER INFORMATION ----")
         print("- Name : " + self.pseudo)
         print("- Passeport Number : " + self.passeport_number)
-        if (self.n_tickets = 0):
+        if (self.n_tickets == 0):
             print("- No plane tickets found...")
         else:
             print("- " + self.n_tickets + " tickets booked !")
