@@ -1,9 +1,19 @@
-'''
-@author : Erwin Lejeune <erwin.lejeune15@gmail.com>
-@date : 02/02/2020
-@brief : airplane reservation program
-'''
+import random
 
 class Booker():
     def __init__(self):
-        pass
+        super().__init__()
+        self.destinations = ["New York", "Paris", "London", "Tokyo"]
+        self.ticket_list = []
+        self.data_base = dict()
+
+
+    def generate_ticket(self, passenger):
+        ticket = random.randint(1000, 100000)
+        while(ticket in self.ticket_list):
+            ticket = random.randint(1000, 100000)
+        self.ticket_list.append(ticket)
+        return ticket
+
+    
+    
