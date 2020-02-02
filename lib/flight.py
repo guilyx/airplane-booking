@@ -7,5 +7,4 @@
 class Flight():
     def __init__(self):
         self.passenger_list = []
-
-    def set
+        
