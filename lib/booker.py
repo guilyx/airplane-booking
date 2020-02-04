@@ -81,6 +81,15 @@ class Booker():
             input("Press Enter to continue...")
             time.sleep(2)
 
+
+    def cancel_ticket(self, Passenger, ticket = None):
+        pass
+
+
+    def display_info(self, Passenger):
+        pass
+
+
     def generate_ticket(self, Passenger):
         ticket = random.randint(1000, 100000)
         while(ticket in self.ticket_list):
