@@ -6,9 +6,9 @@
 
 from os import system
 class Passenger():
-    def __init__(self, pseudo, passeport_number):
+    def __init__(self, pseudo, passport_number):
         self.pseudo = pseudo
-        self.passeport_number = passeport_number
+        self.passport_number = passport_number
         self.has_booked = False
         self.tickets = []
         self.book = dict()
