@@ -12,11 +12,9 @@ from lib.passenger import Passenger
 from lib.booker import Booker
 from lib.flight import Flight
 
-def check_duplicate():
+def check_ticket_number():
     booker = Booker()
     p1 = Passenger("Norbert", 101)
-    ticket = booker.generate_ticket(p1)
-    p1.n_tickets += 1
-
+    booker.reserve_ticket(p1, True)
     assert(len(booker.ticket_list) == 1)
     
