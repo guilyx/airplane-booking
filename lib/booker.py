@@ -77,8 +77,9 @@ class Booker():
         chosen_flight.add_passenger(Passenger)
         print("Your ticket for " + chosen_flight.destination + " has been successfully booked.")
         print("Returning to main menu...")
-        input("Press Enter to continue...")
-        time.sleep(2)
+        if not(rand_dest):
+            input("Press Enter to continue...")
+            time.sleep(2)
 
     def generate_ticket(self, Passenger):
         ticket = random.randint(1000, 100000)
