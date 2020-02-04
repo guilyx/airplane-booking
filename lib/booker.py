@@ -28,13 +28,16 @@ class Booker():
         return(opt)
 
     
-    def reserve_ticket(self, Passenger):
+    def reserve_ticket(self, Passenger, rand_dest = False):
         os.system('clear')
         print("---- MENU ----")
         print("Which destination ?\n 1 : New York\n 2 : Paris\n 3 : London\n 4 : Tokyo")
-        dest = 0
-        while dest < 1 or dest > 4:
-            dest = int(input("Choice : "))
+        if rand_dest == False:
+            dest = 0
+            while dest < 1 or dest > 4:
+                dest = int(input("Choice : "))
+        else:
+            dest = random.randint(1, 4)
 
         chosen_flight = self.flight_dtb[self.destinations[dest - 1]]
         ticket = self.generate_ticket(Passenger)
