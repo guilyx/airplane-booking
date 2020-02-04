@@ -6,7 +6,6 @@ from lib.passenger import Passenger
 
 class Booker():
     def __init__(self):
-        super().__init__()
         self.destinations = ["New York", "Paris", "London", "Tokyo"]
         self.flight_dtb = dict()
 
