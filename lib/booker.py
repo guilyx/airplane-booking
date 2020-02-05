@@ -26,6 +26,7 @@ class Booker():
 
     
     def main_menu(self):
+        self.exit = False
         os.system('clear')
         print("---- MENU ----")
         known = False
@@ -46,6 +47,8 @@ class Booker():
         
         if(opt == 1):
             self.reserve_ticket(self.current_user)
+        elif(opt == 3):
+            self.display_info(self.current_user)
         elif(opt == 4):
             self.exit = True
         else:
@@ -82,13 +85,39 @@ class Booker():
             time.sleep(2)
 
         
-    def cancel_ticket(self, Passenger):
+    def cancel_ticket(self, Passenger, rand_dest = False):
         pass
+        '''if (rand_dest == False):
+            os.system('clear')
+        print("---- MENU ----")
+        Passenger.print_tickets()
+        if rand_dest == False:
+            dest = 0
+            while dest < 1 or dest > len(self.destinations):
+                dest = int(input("Choice : "))
+        else:
+            dest = random.randint(1, len(self.destinations))
+
+        chosen_flight = self.flight_dtb[self.destinations[dest - 1]]
+        
+        if(Passenger.passport_number in self.passport_dtb):
+            print("Your Passport Number is already used by someone, are you sure it is correct ?")
+        else:
+            self.passport_dtb.append(Passenger.passport_number)
+        ticket = self.generate_ticket(Passenger)
+        Passenger.book_ticket(chosen_flight, ticket)
+        chosen_flight.add_passenger(Passenger)
+        print("Your ticket for " + chosen_flight.destination + " has been successfully booked.")
+        print("Returning to main menu...")
+        if not(rand_dest):
+            input("Press Enter to continue...")
+            time.sleep(2)'''
 
 
-    def display_info(self):
-        pass
-    
+    def display_info(self, Passenger):
+        Passenger.print_info()
+        input("Press Enter to continue...")
+        
 
     def generate_ticket(self, Passenger):
         ticket = random.randint(1000, 100000)
