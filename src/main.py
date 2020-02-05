@@ -15,8 +15,7 @@ import string, random
 
 
 def main():
-    destinations = ["Lyon", "Paris", "Marseille"]
-    maestro = Booker(destinations)
+    maestro = Booker()
 
     while(maestro.exit == False):
         maestro.main_menu()
