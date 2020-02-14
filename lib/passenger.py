@@ -21,6 +21,14 @@ class Passenger():
         self.has_booked = True
         self.n_tickets += 1
     
+    
+    def remove_ticket(self, Flight, ticket):
+        self.book[Flight.destination] = None 
+        self.tickets.remove(ticket)
+        self.n_tickets -= 1
+        if (self.n_tickets == 0):
+            self.has_booked = False
+
 
     def print_info(self):
         system('clear')
@@ -29,14 +37,14 @@ class Passenger():
         print("- Name : " + self.pseudo)
         print("- Passeport Number : " + str(self.passport_number))
         if (self.n_tickets == 0):
-            print("- No plane tickets found...")
+            print("- No plane ticket(s) found...")
         else:
             self.print_tickets()
         
 
     def print_tickets(self):
         print("\n\r")
-        print("---- TICKETS HELD ----")
-        print(self.pseudo + " holds " + str(self.n_tickets) + " tickets.")
+        print("---- TICKET(S) HELD ----")
+        print(self.pseudo + " holds " + str(self.n_tickets) + " ticket(s).")
         print(self.book)
         
