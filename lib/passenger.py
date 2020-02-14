@@ -23,7 +23,7 @@ class Passenger():
     
     
     def remove_ticket(self, Flight, ticket):
-        self.book[Flight.destination] = None 
+        self.book.pop(Flight.destination)
         self.tickets.remove(ticket)
         self.n_tickets -= 1
         if (self.n_tickets == 0):
