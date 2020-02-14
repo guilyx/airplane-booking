@@ -114,23 +114,21 @@ class Booker():
                 os.system('clear')
             print("---- MENU ----")
             Passenger.print_tickets()
-            cities, ticket_numb = list(Passenger.book.items())
+            cities_list = []
+            ticket_numb_list = []
+            for cities, ticket_numb in Passenger.book.items():
+                cities_list.append(cities)
+                ticket_numb_list.append(ticket_numb_list)
             if (not(auto_test)):
-                print(ticket_numb)
                 selected_ticket = int(input("Type the ticket number you want to cancel."))
-                while selected_ticket not in ticket_numb:
+                while selected_ticket not in ticket_numb_list:
                     print("Ticket not found, type it again !")
                     selected_ticket = int(input("Type the ticket number you want to cancel."))
             else:
                 selected_ticket = random.choice(ticket_numb)
                 index = ticket_numb.index(selected_ticket)
-                chosen_flight = self.flight_dtb[cities[index]]
-            '''else:
-                print("You only hold one ticket, removing " + str(Passenger.book))
-                time.sleep(1)
-                selected_ticket = Passenger.tickets[0]
-                key = list(Passenger.book.keys())
-                chosen_flight = self.flight_dtb[key[0]]'''
+                chosen_flight = self.flight_dtb[cities_list[index]]
+
 
             Passenger.remove_ticket(chosen_flight, selected_ticket)
             self.ticket_list.remove(selected_ticket)
