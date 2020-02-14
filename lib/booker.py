@@ -118,7 +118,7 @@ class Booker():
             ticket_numb_list = []
             for cities, ticket_numb in Passenger.book.items():
                 cities_list.append(cities)
-                ticket_numb_list.append(ticket_numb_list)
+                ticket_numb_list.append(ticket_numb)
             if (not(auto_test)):
                 selected_ticket = int(input("Type the ticket number you want to cancel."))
                 while selected_ticket not in ticket_numb_list:
@@ -126,10 +126,9 @@ class Booker():
                     selected_ticket = int(input("Type the ticket number you want to cancel."))
             else:
                 selected_ticket = random.choice(ticket_numb)
-                index = ticket_numb.index(selected_ticket)
-                chosen_flight = self.flight_dtb[cities_list[index]]
 
-
+            index = ticket_numb_list.index(selected_ticket)
+            chosen_flight = self.flight_dtb[cities_list[index]]
             Passenger.remove_ticket(chosen_flight, selected_ticket)
             self.ticket_list.remove(selected_ticket)
             chosen_flight.remove_passenger(Passenger)
