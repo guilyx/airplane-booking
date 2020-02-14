@@ -53,6 +53,22 @@ def test_duplicates_passports():
         passengers.append(Passenger(name_list[i], passports[i]))
         maestro.reserve_ticket(passengers[i], True)
     assert(checkIfDuplicates(passports) == False)
+
+
+def test_duplicates_booker_passport():
+    maestro = Booker()
+    name_list = []
+    passports = []
+    passengers = []
+    for i in range(50):
+        name_list.append(''.join(random.choice(string.ascii_lowercase) for _ in range(7)))
+        passport_number = random.randint(1000, 10000)
+        while passport_number in passports:
+            passport_number = random.randint(1000, 10000)
+        passports.append(passport_number)
+        passengers.append(Passenger(name_list[i], passports[i]))
+        maestro.reserve_ticket(passengers[i], True)
+    assert(checkIfDuplicates(maestro.passport_dtb) == False)
     
 
     
