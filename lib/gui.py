@@ -12,10 +12,47 @@ class Interface(tk.Frame):
     def __init__(self, fenetre, **kwargs):
         tk.Frame.__init__(self, fenetre, width=500, height=300, **kwargs)
         self.grid(sticky="nsew")
+        self.option_add("*Font", "Helvetica")
+        self.option_add("*Background", "light blue")
 
+        self.option_add("*selectBackground", "gold")
+        self.option_add("*selectForeground", "black")
+        self.config(background="light blue")
+        
+        self.startup_menu()
+
+       
+
+        
+
+    def startup_menu(self):
         # Création de nos widgets
-        message = tk.Label(self, text="Welcome on my first GUI")
-        message.grid(column=4, row=0)
+        message = tk.Label(self, text="Welcome on my first GUI\n", font=("Helvetica", 12, "bold"))
+        message.grid(column=0, row=0)
+
+        message2 = tk.Label(self, text="On this API you will be able to :\n")
+        message2.grid(column=0, row=2)
+
+        options = dict()
+        options[0] = "   - Book tickets from a list of destinations."
+        options[1] = "   - Cancel tickets from the list of tickets you own."
+        options[2] = "   - Display info on Planes, Tickets, Destinations and yourself.\n"
+        for i in range(3):
+            tk.Label(self, text=options[i]).grid(column=0, row=3+i, sticky="w")
+
+        self.start_button = tk.Button(self, text="Click to Start", fg="green", command=self.get_id)
+        self.start_button.grid(column=0, row=8)
+
+        self.bouton_quitter = tk.Button(self, text="Exit", command=self.quit)
+        self.bouton_quitter.grid(column=0, row=9, sticky= "s")
+
+    def get_id(self):
+        slaves = self.grid_slaves()
+        for elem in slaves:
+            if elem == self.bouton_quitter:
+                continue
+            else:
+                elem.destroy()
 
         message2 = tk.Label(self, text="Enter your IDs")
         message2.grid(column=0, row=2)
@@ -37,8 +74,6 @@ class Interface(tk.Frame):
         )
         self.ok_button.grid(column=5, row=2)
 
-        self.bouton_quitter = tk.Button(self, text="Exit", command=self.quit)
-        self.bouton_quitter.grid(column=4, row=7)
 
     def send_id(self):
         self.name = self.name_entry.get()
