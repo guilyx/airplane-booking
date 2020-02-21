@@ -10,7 +10,7 @@ from lib.booker import Booker
 
 class Interface(tk.Frame):
     def __init__(self, fenetre, **kwargs):
-        tk.Frame.__init__(self, fenetre, width=700, height=300, **kwargs)
+        tk.Frame.__init__(self, fenetre, width=500, height=300, **kwargs)
         self.grid(sticky="nsew")
         self.option_add("*Font", "Helvetica 16")
         self.option_add("*Background", "light blue")
@@ -85,16 +85,30 @@ class Interface(tk.Frame):
     def main_menu(self):
         self.clear()
 
-        message = tk.Label(self, text="       Hello ")
-        message.grid(column=0, row=0, sticky = "w")
-        message2 = tk.Label(self, text=(self.name + ', '), font=("Helvetica", 12, "bold"))
-        message2.grid(column=1, row=0, sticky = "w")
+        message = tk.Label(self, text="Hello " + self.name + ", ")
+        message.grid(column=0, row=0, sticky = "nw")
 
         message3 = tk.Label(
             self,
             text="Welcome to our main menu. Please select what you want to do."
         )
-        message3.grid(column=1, row=1)
+        message3.grid(column=0, row=1, sticky = "nw")
+
+        bttn_opt = []
+        descr_labels = []
+        descr = ""
+        for i in range(4):
+            if(i == 0):
+                descr = "------------------ Book Tickets"
+            elif(i == 1):
+                descr = "------------------ Cancel Tickets"
+            elif(i == 2):
+                descr = "------------------ Select Ticket and Display its information"
+            elif(i == 3):
+                descr = "------------------ Display your information"
+
+            descr_labels.append(tk.Label(self, text=descr).grid(column=0, row=(i+2), sticky="w"))
+            bttn_opt.append(tk.Button(self, text="Choice " + str(i+1)).grid(column=0, row=(i+2), sticky="w"))
 
     def validate_name(self):
         name = self.name_entry.get()

@@ -26,7 +26,7 @@ def main():
 def frame():
     window = tk.Tk()
     window.title("Booking Menu")
-    window.geometry('800x300')
+    window.geometry('750x400')
     window.config(background="light blue")
     frame = Interface(window)
 
